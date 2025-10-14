@@ -1,0 +1,45 @@
+# .bashrcに追加する
+#[ -s ~/.bash_docker ] && source ~/.bash_docker
+
+alias dc='docker compose'
+
+docker-destroy() {
+    echo "警告: 全てのDockerオブジェクトをクリーンアップ(強制削除)します。"
+    echo "他のユーザが実行中のコンテナも強制削除されます！"
+    echo ""
+    echo "=== 削除対象 ==="
+    docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+    echo ""
+    read -p "本当に実行しますか？ (y/N): " confirm
+
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        docker container rm -f $(docker ps -aq) 2>/dev/null
+        docker volume rm -f $(docker volume ls -q) 2>/dev/null
+        docker network prune -f
+        docker system prune -af --volumes
+        echo "クリーンアップしました！"
+    else
+        echo "クリーンアップを中止しました。"
+    fi
+}
+
+docker-destroy-withimage() {
+    echo "警告: 全てのDockerオブジェクトをクリーンアップ(強制削除)します。"
+    echo "他のユーザが実行中のコンテナも強制削除されます！"
+    echo ""
+    echo "=== 削除対象 ==="
+    docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+    echo ""
+    read -p "本当に実行しますか？ (y/N): " confirm
+
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        docker container rm -f $(docker ps -aq) 2>/dev/null
+        docker volume rm -f $(docker volume ls -q) 2>/dev/null
+        docker network prune -f
+        docker system prune -af --volumes
+        docker image rm -f $(docker images -aq) 2>/dev/null
+        echo "クリーンアップしました！"
+    else
+        echo "クリーンアップを中止しました。"
+    fi
+}
