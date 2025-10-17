@@ -1,48 +1,19 @@
-提供された履歴を元に、コメント付きの初期セットアップ手順を作成しました。
+# Ubuntu-Server初期セットアップ
 
+## 準備
 ```bash
 # システムパッケージの更新
 apt update && apt upgrade -y
 
 # 必要なパッケージのインストール
-apt install -y vim ansible git curl ntfs-3g alsa-utils
+apt install -y vim ansible git curl
 
 # 初期セットアップに使用したユーザー(aaaaa)を削除
 userdel -r aaaaa
-
-# ブロックデバイスの確認
-lsblk
-
-# パーティションのUUID確認
-blkid
-
-# NTFSドライブ用のマウントポイント作成
-mkdir -p /ntfs931
-
-# fstabを編集して永続的なマウント設定を追加
-vi /etc/fstab
 ```
 
-**fstabに追加する内容:**
-```
-UUID=84603D87603D814A /ntfs931 ntfs-3g defaults,remove_hiberfile,nofail 0 0
-```
-- `remove_hiberfile`: Windowsの休止状態ファイルを削除してマウント
-- `nofail`: マウント失敗時もブート処理を継続
-
+## WiFi設定
 ```bash
-# fstabの設定を適用(エラーがないか確認)
-mount -a
-
-# マウント状態の確認
-df -h | grep ntfs931
-
-# システム再起動
-reboot
-
-# 再起動後、マウント状態を確認
-df -h | grep ntfs931
-
 # ネットワークインターフェース一覧の確認
 ip link show
 
@@ -50,7 +21,7 @@ ip link show
 vi /etc/netplan/50-cloud-init.yaml
 ```
 
-**50-cloud-init.yamlに追加する内容(WiFi設定):**
+**50-cloud-init.yamlに追加する内容:**
 ```yaml
   wifis:
     wlp0s20f3:
@@ -65,27 +36,50 @@ vi /etc/netplan/50-cloud-init.yaml
           metric: 100
       access-points:
         "(SSID)":
-          password: '(暗号キー)'
+          password: "(暗号キー)"
 ```
 - 有線(eno1): 192.168.0.98
 - 無線(wlp0s20f3): 192.168.0.99
 - WiFiルートのmetric値を100に設定し、有線を優先
-
+- パスワードに `'` や `"` が含まれる場合は適切にエスケープするか、パスワードを変更推奨
 ```bash
 # ネットワーク設定を適用(別端末からping -tして問題なければ適用)
 netplan try
 
-# オーディオミキサーの設定(音量調整)
-alsamixer
-
-# スピーカーテスト(2チャンネルでwavファイル再生)
-speaker-test -t wav -c 2
+# または即座に適用
+netplan apply
 ```
 
-この手順により、以下が完了します:
-- システムの最新化
-- 必要なツールのインストール
-- 不要ユーザーの削除
-- NTFSドライブの永続的マウント
-- 有線・無線ネットワークの設定
-- オーディオの動作確認
+### WiFi接続のトラブルシューティング
+```bash
+# 無線デバイスの状態確認
+ip addr show wlp0s20f3
+ip link show wlp0s20f3
+
+# 経路確認
+ip route
+
+# netplanの詳細ログ付き適用
+netplan --debug apply
+
+# netplanが生成した設定ファイルの確認
+cat /run/systemd/network/10-netplan-wlp0s20f3.network
+cat /run/netplan/wpa-wlp0s20f3.conf
+
+# ネットワーク関連ログの確認
+journalctl -u systemd-networkd -n 50
+journalctl -u netplan-wpa-wlp0s20f3.service -n 50
+
+# サービスの状態確認
+systemctl status netplan-wpa-wlp0s20f3.service
+
+# サービスの再起動
+systemctl restart netplan-wpa-wlp0s20f3.service
+
+# 無線デバイスの手動UP
+ip link set wlp0s20f3 up
+
+# 接続テスト
+ping -c 3 8.8.8.8
+ping -c 3 192.168.0.1
+```
