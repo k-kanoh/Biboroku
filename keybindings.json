@@ -1,0 +1,85 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入しますauto[]
+[
+  // [Ctrl]+[←]で多分<cursorWordStartLeft>と同じ意味だが明示的ではないので消す
+  {
+    "key": "ctrl+left",
+    "command": "-cursorWordLeft",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "-cursorWordLeftSelect",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  // [Ctrl]+[→]で多分<cursorWordStartRight>と同じ意味だが明示的ではないので消す
+  {
+    "key": "ctrl+right",
+    "command": "-cursorWordEndRight",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "-cursorWordEndRightSelect",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  // [Ctrl]+[←]で単語の始まりに止まるようにする
+  {
+    "key": "ctrl+left",
+    "command": "cursorWordStartLeft",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "cursorWordStartLeftSelect",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  // [Ctrl]+[→]で単語の始まりに止まるようにする
+  {
+    "key": "ctrl+right",
+    "command": "cursorWordStartRight",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "cursorWordStartRightSelect",
+    "when": "textInputFocus && !accessibilityModeEnabled"
+  },
+  // [Ctrl]+[-]で縮小が誤爆してしまうので消す
+  {
+    "key": "ctrl+oem_minus",
+    "command": "-workbench.action.zoomOut"
+  },
+  // 縮小を消す
+  {
+    "key": "ctrl+shift+oem_minus",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
+    "key": "ctrl+numpad_subtract",
+    "command": "-workbench.action.zoomOut"
+  },
+  // 拡大を消す
+  {
+    "key": "ctrl+oem_plus",
+    "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "ctrl+shift+oem_plus",
+    "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "ctrl+numpad_add",
+    "command": "-workbench.action.zoomIn"
+  },
+  // 拡大縮小のリセットを消す
+  {
+    "key": "ctrl+numpad0",
+    "command": "-workbench.action.zoomReset"
+  },
+  // [Ctrl]+[-]で元の画面に戻るようにする
+  {
+    "key": "ctrl+oem_minus",
+    "command": "workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+]

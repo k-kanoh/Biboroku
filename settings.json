@@ -1,0 +1,133 @@
+{
+  "[blade]": {
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer",
+    "editor.formatOnSave": true
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma",
+    "editor.formatOnSave": true
+  },
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "chat.disableAIFeatures": true,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "/tmp/postman-collections-post-response.instructions.md": true,
+    "/tmp/postman-collections-pre-request.instructions.md": true,
+    "/tmp/postman-folder-post-response.instructions.md": true,
+    "/tmp/postman-folder-pre-request.instructions.md": true,
+    "/tmp/postman-http-request-post-response.instructions.md": true,
+    "/tmp/postman-http-request-pre-request.instructions.md": true
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "debug.javascript.codelens.npmScripts": "never",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "editor.autoClosingBrackets": "beforeWhitespace",
+  "editor.autoClosingQuotes": "beforeWhitespace",
+  "editor.autoSurround": "never",
+  "editor.codeLens": false,
+  "editor.fontFamily": "ＭＳ ゴシック",
+  "editor.fontSize": 12.5,
+  "editor.guides.indentation": false,
+  "editor.lineHeight": 1.2,
+  "editor.minimap.enabled": false,
+  "editor.mouseWheelZoom": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "boundary",
+  "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+  "explorer.confirmDragAndDrop": false,
+  "files.autoGuessEncoding": true,
+  "files.autoSaveDelay": 500,
+  "files.restoreUndoStack": false,
+  "files.watcherExclude": {
+    "**": true
+  },
+  "git.ignoreMissingGitWarning": true,
+  "intelephense.files.associations": ["*.php", "*.phtml"],
+  "less.lint.unknownAtRules": "ignore",
+  "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+  "php-cs-fixer.lastDownload": 1731135265145,
+  "prettier.useEditorConfig": false,
+  "remote.SSH.suppressWindowsSshWarning": true,
+  "remote.SSH.useLocalServer": true,
+  "scss.lint.unknownAtRules": "ignore",
+  "workbench.colorCustomizations": {
+    "terminal.ansiBlack": "#1E0528",
+    "terminal.ansiBlue": "#550068",
+    "terminal.ansiBrightBlack": "#320F55",
+    "terminal.ansiBrightBlue": "#550068",
+    "terminal.ansiBrightCyan": "#B900B1",
+    "terminal.ansiBrightGreen": "#05CB0D",
+    "terminal.ansiBrightMagenta": "#8991BB",
+    "terminal.ansiBrightRed": "#00D9E9",
+    "terminal.ansiBrightWhite": "#F8C0FF",
+    "terminal.ansiBrightYellow": "#955AE7",
+    "terminal.ansiCyan": "#B900B1",
+    "terminal.ansiGreen": "#05CB0D",
+    "terminal.ansiMagenta": "#8991BB",
+    "terminal.ansiRed": "#00D9E9",
+    "terminal.ansiWhite": "#FFEEFF",
+    "terminal.ansiYellow": "#955AE7",
+    "terminal.background": "#1E0528",
+    "terminal.foreground": "#FFEEFF",
+    "terminalCursor.background": "#FFEEFF",
+    "terminalCursor.foreground": "#FFEEFF"
+  },
+  "workbench.colorTheme": "Light High Contrast Theme",
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "material-icon-theme"
+}
